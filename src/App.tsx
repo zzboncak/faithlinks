@@ -8,19 +8,7 @@ import Header from "./components/Header";
 import "./App.css";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div className="max-w-full">
-        <Header />
-      </div>
-      <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<About />} path="/About" />
-        <Route element={<Foods />} path="/Foods" />
-        <Route element={<FilteredFoods />} path="/filteredfoods/:slug" />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <div>I am the app</div>;
 }
 
 export default App;
