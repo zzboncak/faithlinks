@@ -24,7 +24,8 @@ const announcement = {
       title: "Priority",
       description: "Set this number to control the order in which the announcements are displayed. Lower numbers will be rendered before higher numbers.",
       name: "priority",
-      type: "number"
+      type: "number",
+      hidden: ({document}) => !document?.active
     }
   ]
 };
