@@ -32,7 +32,7 @@ export function generateDate(): string {
     if (dayNumber.startsWith("0")) {
       dayNumber = dayNumber.slice(1);
     }
-    return `${monthsDictionary[dateArray[1]]} ${dayNumber}`;
+    return `${monthsDictionary[dateArray[1]]} ${dayNumber}, ${dateArray[3]}`;
   } else {
     const day = dateArray[0];
     const nextSunday = new Date(
@@ -43,6 +43,8 @@ export function generateDate(): string {
     if (dayNumber.startsWith("0")) {
       dayNumber = dayNumber.slice(1);
     }
-    return `${monthsDictionary[nextSundayArray[1]]} ${dayNumber}`;
+    return `${monthsDictionary[nextSundayArray[1]]} ${dayNumber}, ${
+      nextSundayArray[3]
+    }`;
   }
 }
