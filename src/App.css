@@ -1,3 +1,72 @@
 .App {
   text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+  min-height: 97vh;
+  margin-bottom: -80px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (max-width: 400px) {
+  .App {
+    width: 90vw;
+  }
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(14, 12, 12);
+}
+
+.register-link {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.App-header .date {
+  margin-top: -10px;
+}
+
+.register-button,
+.breeze_form_embed {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.helper-text {
+  margin-top: 15px;
+}
+
+.App-link {
+  color: blue;
+}
+
+footer,
+.push {
+  height: 70px;
+  text-align: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.action-link {
+  display: block;
+  font-size: 24px;
+  margin: 30px auto;
+}
+
+.announcement {
+  text-align: left;
 }
