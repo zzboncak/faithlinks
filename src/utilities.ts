@@ -28,13 +28,21 @@ export function generateDate(): string {
   const isSunday = new Date().toString().includes("Sun");
   const dateArray = Date().split(" ");
   if (isSunday) {
-    return `${monthsDictionary[dateArray[1]]} ${dateArray[2]}`;
+    let dayNumber = dateArray[2];
+    if (dayNumber.startsWith("0")) {
+      dayNumber = dayNumber.slice(1);
+    }
+    return `${monthsDictionary[dateArray[1]]} ${dayNumber}`;
   } else {
     const day = dateArray[0];
     const nextSunday = new Date(
       Date.now() + millisecondsInDay * daysTillSunday[day]
     ).toString();
     const nextSundayArray = nextSunday.split(" ");
-    return `${monthsDictionary[nextSundayArray[1]]} ${nextSundayArray[2]}`;
+    let dayNumber = nextSundayArray[2];
+    if (dayNumber.startsWith("0")) {
+      dayNumber = dayNumber.slice(1);
+    }
+    return `${monthsDictionary[nextSundayArray[1]]} ${dayNumber}`;
   }
 }
