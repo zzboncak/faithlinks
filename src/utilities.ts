@@ -21,30 +21,22 @@ const daysTillSunday: Record<string, number> = {
   Wed: 4,
   Thu: 3,
   Fri: 2,
-  Sat: 1
+  Sat: 1,
+  Sun: 0
 };
 
 export function generateDate(): string {
-  const isSunday = new Date().toString().includes("Sun");
   const dateArray = Date().split(" ");
-  if (isSunday) {
-    let dayNumber = dateArray[2];
-    if (dayNumber.startsWith("0")) {
-      dayNumber = dayNumber.slice(1);
-    }
-    return `${monthsDictionary[dateArray[1]]} ${dayNumber}, ${dateArray[3]}`;
-  } else {
-    const day = dateArray[0];
-    const nextSunday = new Date(
-      Date.now() + millisecondsInDay * daysTillSunday[day]
-    ).toString();
-    const nextSundayArray = nextSunday.split(" ");
-    let dayNumber = nextSundayArray[2];
-    if (dayNumber.startsWith("0")) {
-      dayNumber = dayNumber.slice(1);
-    }
-    return `${monthsDictionary[nextSundayArray[1]]} ${dayNumber}, ${
-      nextSundayArray[3]
-    }`;
+  const day = dateArray[0];
+  const nextSunday = new Date(
+    Date.now() + millisecondsInDay * daysTillSunday[day]
+  ).toString();
+  const nextSundayArray = nextSunday.split(" ");
+  let dayNumber = nextSundayArray[2];
+  if (dayNumber.startsWith("0")) {
+    dayNumber = dayNumber.slice(1);
   }
+  return `${monthsDictionary[nextSundayArray[1]]} ${dayNumber}, ${
+    nextSundayArray[3]
+  }`;
 }
