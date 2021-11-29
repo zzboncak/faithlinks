@@ -1,15 +1,17 @@
 import React from "react";
 import logo from "./images/Faith-Logo-Square-2.jpg";
 import "./App.css";
+import { generateDate } from "./utilities";
 
 function App() {
   const logoDimension = "70px;";
+  const dateText = generateDate();
   return (
     <>
       <main className="App">
         <header className="App-header">
           <h1>Sign Ups & Links</h1>
-          <p className="date">November 28, 2021: First Sunday of Advent</p>
+          <p className="date">{dateText}: First Sunday of Advent</p>
         </header>
         <a
           href="https://faithecc.breezechms.com/form/Worship_Check_In83"
