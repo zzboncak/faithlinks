@@ -7,16 +7,22 @@ import { Link, LinkProps } from "./components/Link";
 import BlockContent from "@sanity/block-content-to-react";
 import { Announcement } from "./components/announcement";
 
+type DocumentData = {
+  pageTitle: string;
+  sundayTitle: string;
+};
+
 function App() {
   const logoDimension = "70px;";
   const dateText = generateDate();
   const [links, setLinks] = useState<LinkProps[]>([]);
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [documentData, setDocumentData] = useState<DocumentData>();
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[_type == "links" && active]{
+        `*[_type == "links" && active] {
           displayText,
           url
         }`
@@ -37,12 +43,26 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "documentData"] {
+          pageTitle,
+          sundayTitle
+        }`
+      )
+      .then((data) => setDocumentData(data[0]))
+      .catch(console.error);
+  }, []);
+
   return (
     <>
       <main className="App">
         <header className="App-header">
-          <h1>Sign Ups & Links</h1>
-          <p className="date">{dateText}: First Sunday of Advent</p>
+          <h1>{documentData?.pageTitle}</h1>
+          <p className="date">
+            {dateText}: {documentData?.sundayTitle}
+          </p>
         </header>
         {links.length > 0 &&
           links.map(({ displayText, url }, i) => (
