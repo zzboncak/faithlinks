@@ -36,7 +36,7 @@ function App() {
       .then((data) => setAnnouncements(data))
       .catch(console.error);
   }, []);
-  console.log(announcements);
+
   return (
     <>
       <main className="App">
